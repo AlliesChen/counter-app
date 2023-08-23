@@ -9,7 +9,7 @@ processes = []
   destination = "/data"
 
 [experimental]
-  auto_rollback = true
+  enable_consul = true
 
 [[services]]
   internal_port = 8080
