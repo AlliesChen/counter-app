@@ -9,14 +9,17 @@ data:
 
 lease:
   # Required. Must be either "consul" or "static".
-  type: "static"
+  type: "consul"
 
   # Required. The URL for the primary node's LiteFS API.
   # Note: replace `primary` with the appropriate hostname for your primary node!
-  advertise-url: "http://localhost:20202"
+  advertise-url: "http://${HOSTNAME}.vm.${FLY_APP_NAME}.internal:20202"
 
   # Specifies whether the node can become the primary. If using
   # "static" leasing, this should be set to true on the primary
   # and false on the replicas.
   # Note: update this to `false` on the replica nodes!
   candidate: true
+  consul:
+    url: "${FLY_CONSUL_URL}"
+    key: "litefs/${FLY_APP_NAME}"
