@@ -26,3 +26,11 @@ As I have the features run on staging server, `-a` flag should be added to the C
 `fly ssh -a my-app-staging console -C bash`
 
 The other thing that different from the course as using staging server is that `[primary_region]` should be included in `fly.toml`. Otherwise, the deployment would fail and show an error like: `nrt != iad`.
+
+### Multi-region part
+
+`fly vol create --region` followed by `fly scale count {number}` does not have the created volume with different region attaches to it, but to create one new volume with the primary region and assign a new machine to that volume.
+
+Use `fly machine clone {machine_id} --attach-volume {volume_id}:{destination}` instead for assigning the manually created volume in different region to a new machine, refer to [Add volume storage #Clone the Machine](https://fly.io/docs/apps/volume-storage/#clone-the-machine).
+
+For testing the multi-region does work, I use [modheader](https://modheader.com/) instead.
