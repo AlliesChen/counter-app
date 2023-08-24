@@ -7,6 +7,11 @@ fuse:
 data:
   dir: "/data/litefs"
 
+proxy:
+  addr: "${INTERNAL_PORT}"
+  target: "localhost:${PORT}"
+  db: "${DATABASE_FILENAME}"
+
 lease:
   # Required. Must be either "consul" or "static".
   type: "consul"
@@ -19,7 +24,7 @@ lease:
   # "static" leasing, this should be set to true on the primary
   # and false on the replicas.
   # Note: update this to `false` on the replica nodes!
-  candidate: true
+  candidate: ${FLY_REGION == 'nrt'}
   
   consul:
     url: "${FLY_CONSUL_URL}"
