@@ -61,7 +61,7 @@ COPY --from=build /app/build /app/build
 
 ADD . .
 
-COPY --from=flyio/litefs:0.5 /usr/local/bin/litefs /usr/local/bin/litefs
+COPY --from=flyio/litefs:latest /usr/local/bin/litefs /usr/local/bin/litefs
 ADD litefs.yml /etc/litefs.yml
 
 CMD ["litefs", "mount", "--", "npm", "start"]
