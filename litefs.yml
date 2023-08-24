@@ -20,6 +20,7 @@ lease:
   # and false on the replicas.
   # Note: update this to `false` on the replica nodes!
   candidate: true
+  
   consul:
     url: "${FLY_CONSUL_URL}"
     key: "litefs/${FLY_APP_NAME}"
