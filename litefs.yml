@@ -8,7 +8,7 @@ data:
   dir: "/data/litefs"
 
 proxy:
-  addr: "${INTERNAL_PORT}"
+  addr: ":${INTERNAL_PORT}"
   target: "localhost:${PORT}"
   db: "${DATABASE_FILENAME}"
 
